@@ -16,3 +16,5 @@ jobs:
         project_name: My Project
         column_name: To do
         issue_number: ${{ github.event.issue.number }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        if: github.event.label.name == 'bug'
