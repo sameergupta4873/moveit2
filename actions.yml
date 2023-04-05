@@ -1,0 +1,21 @@
+name: Add to Project
+
+on:
+  issues:
+    types: [labeled]
+  pull_requests:
+    types: [labeled]
+
+jobs:
+  add_to_project:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add to Project
+      uses: actions/add-to-project@v1
+      with:
+        project_name: Bug Tracking
+        column_name: To Do
+        issue_number: ${{ github.event.issue.number }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Filters for the labeled event
+        if: github.event.label.name == 'bug'
